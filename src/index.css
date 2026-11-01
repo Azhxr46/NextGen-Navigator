@@ -1,0 +1,352 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@layer base {
+  :root {
+    --color-primary-burgundy: #7A1C33;
+    --color-secondary-burgundy: #9B314B;
+    --color-deep-crimson: #580C1F;
+    --color-dark-burgundy: #4A0817;
+    --color-warm-ivory: #FAF6F0;
+    --color-metallic-silver: #D8D8DA;
+    --color-off-white: #FFFFFF;
+
+    --brand-primary: #7A1C33;
+    --brand-secondary: #9B314B;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    background-color: #4A0817; /* Matches top header for overscroll */
+    color: #1F0208;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    background-color: #FAF6F0;
+    color: #1F0208;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Kannada', 'Noto Sans Devanagari', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  select, input, textarea {
+    max-width: 100%;
+  }
+}
+
+/* Reusable Button System */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  background-color: #7A1C33;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px 0 rgba(122, 28, 51, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+.btn-primary:hover {
+  background-color: #580C1F;
+  box-shadow: 0 6px 20px 0 rgba(88, 12, 31, 0.35);
+  transform: translateY(-2px);
+}
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  background-color: #F9EBEF;
+  color: #7A1C33;
+  border: 1px solid #F2D3DC;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, background-color;
+}
+.btn-secondary:hover {
+  background-color: #F2D3DC;
+  color: #580C1F;
+  transform: translateY(-2px);
+}
+.btn-secondary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  color: #7A1C33;
+  background-color: transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, background-color;
+}
+.btn-ghost:hover {
+  background-color: rgba(122, 28, 51, 0.08);
+  transform: translateY(-1px);
+}
+.btn-ghost:active {
+  transform: translateY(0);
+}
+
+/* =========================================================================
+   PRELOADER OPENING ANIMATION SYSTEM
+   ========================================================================= */
+@keyframes preloaderZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes letterReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinCounterSlow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulseAura {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate3d(0, -16px, 0);
+    opacity: 0.8;
+  }
+}
+
+.animate-preloader-zoom {
+  animation: preloaderZoom 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.animate-letter-reveal {
+  opacity: 0;
+  animation: letterReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 14s linear infinite;
+  will-change: transform;
+}
+
+.animate-spin-counter {
+  animation: spinCounterSlow 18s linear infinite;
+  will-change: transform;
+}
+
+.animate-pulse-aura {
+  animation: pulseAura 3.6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-fade-in-delayed {
+  opacity: 0;
+  animation: letterReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  will-change: transform, opacity;
+}
+
+.animate-particle-1 { animation: particleFloat 4.2s ease-in-out infinite; }
+.animate-particle-2 { animation: particleFloat 5.0s ease-in-out infinite 0.8s; }
+.animate-particle-3 { animation: particleFloat 4.5s ease-in-out infinite 1.6s; }
+.animate-particle-4 { animation: particleFloat 5.4s ease-in-out infinite 2.3s; }
+.animate-particle-5 { animation: particleFloat 4.8s ease-in-out infinite 3.0s; }
+.animate-particle-6 { animation: particleFloat 5.2s ease-in-out infinite 3.7s; }
+
+/* =========================================================================
+   PAGE TRANSITION ANIMATION SYSTEM
+   ========================================================================= */
+@keyframes pageSlideInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(24px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.page-transition-enter {
+  animation: pageSlideInRight 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+  width: 100%;
+}
+
+/* =========================================================================
+   SCROLL REVEAL VIEWPORT ANIMATIONS
+   ========================================================================= */
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Stagger delay utility classes */
+.delay-1 { transition-delay: 60ms; }
+.delay-2 { transition-delay: 120ms; }
+.delay-3 { transition-delay: 180ms; }
+.delay-4 { transition-delay: 240ms; }
+
+/* =========================================================================
+   INTERACTIVE CARDS & CONTENT LIFT
+   ========================================================================= */
+.interactive-card {
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease;
+  will-change: transform, box-shadow;
+}
+.interactive-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -4px rgba(74, 8, 23, 0.10), 0 4px 10px -2px rgba(74, 8, 23, 0.04);
+}
+.interactive-card:active {
+  transform: translateY(-1px);
+}
+
+/* Tab indicator smooth slide */
+.tab-indicator {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fade in up keyframes */
+@keyframes sectionFadeUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-up {
+  animation: sectionFadeUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Subtle motion with reduced-motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbars matching Burgundy & Ivory */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF6F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8D8DA;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9B314B;
+}
+
+/* Print Styles for Resume & Dossier PDF / Print */
+@media print {
+  header, nav, footer, .no-print, button, .chat-floating {
+    display: none !important;
+  }
+  
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  .print-page {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
